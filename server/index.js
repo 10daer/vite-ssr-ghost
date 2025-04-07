@@ -3,7 +3,7 @@ import express from "express";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { renderPage } from "vite-plugin-ssr/server";
+import { renderPage } from "vite-plugin-ssr";
 
 // For development with Vite
 const isProduction = process.env.NODE_ENV === "production";

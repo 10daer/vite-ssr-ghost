@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOMServer from "react-dom/server";
-import { dangerouslySkipEscape, escapeInject } from "vite-plugin-ssr/server";
+import { dangerouslySkipEscape, escapeInject } from "vite-plugin-ssr";
 import App from "./App";
 import { PageContextProvider } from "./hooks/usePageContext";
 import { fetchGhostData } from "./lib/ghost";
