@@ -1,0 +1,49 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/
+.vite/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Cache
+.cache/
+*.tsbuildinfo
+
+# SSR server files
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage/
+
+# Output from static analysis tools
+.eslintcache
+
+# Others
+*.tgz

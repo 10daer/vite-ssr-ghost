@@ -1,0 +1,12 @@
+{
+  "name": "vite-ssr-ghost",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node server",
+    "build": "vite build && vite build --ssr",
+    "start": "NODE_ENV=production node server",
+    "lint": "eslint src --ext js,jsx --report-unused-disable-directives",
+    "preview": "vite preview"
+  }
+}

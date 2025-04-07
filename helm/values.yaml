@@ -1,0 +1,82 @@
+# helm/values.yaml
+replicaCount: 2
+
+image:
+  repository: your-registry/vite-ssr-app
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3000
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  hosts:
+    - host: yoursite.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: yoursite-tls
+      hosts:
+        - yoursite.com
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 256Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+
+env:
+  - name: NODE_ENV
+    value: "production"
+  - name: PORT
+    value: "3000"
+  - name: GHOST_API_URL
+    value: "https://demo.ghost.io"
+  - name: GHOST_CONTENT_API_KEY
+    valueFrom:
+      secretKeyRef:
+        name: ghost-api-credentials
+        key: content-api-key
+
+secrets:
+  ghostApiCredentials:
+    create: true
+    data:
+      content-api-key: "your-ghost-content-api-key"
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

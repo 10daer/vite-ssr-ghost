@@ -1,0 +1,14 @@
+# helm/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: { { include "vite-ssr-app.fullname" . } }
+  labels: { { - include "vite-ssr-app.labels" . | nindent 4 } }
+spec:
+  type: { { .Values.service.type } }
+  ports:
+    - port: { { .Values.service.port } }
+      targetPort: { { .Values.service.targetPort } }
+      protocol: TCP
+      name: http
+  selector: { { - include "vite-ssr-app.selectorLabels" . | nindent 4 } }
